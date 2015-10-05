@@ -1,0 +1,36 @@
+body{
+
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+
+}
+
+.grande{
+    font-size: 30pt;
+
+}
+.icone-botao{
+display: inline;
+
+}
+.titulo-botao{
+    display: inline-block;
+    height: inherit;
+
+
+
+
+}
+.barra-lateral{
+
+   background-color: #E0E0E0;
+  width: 15%;
+
+}
+.lista-lateral > li{
+    padding: 10px;
+
+
+
+
+}
