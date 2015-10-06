@@ -8,6 +8,25 @@ CREATE TABLE `financeiro`.`new_table` (
 
 
 
+CREATE TABLE `financeiro`.`telefone` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `numero` VARCHAR(45) NULL COMMENT '',
+  `nome` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '')
+COMMENT = '	';
+
+
+matricula toda hora: 
+data, hora ida, hora volta.
+matriculas (nome, paga, pendente)
+ telefones, 
+ numero de abordagens,
+ com quantas deram atencao, 
+quantas matriculou no curso intensivo
+ quantas matriculou normal
+ contatos. 
+
+
 
 
 CREATE TABLE `financeiro`.`ligacao` (
