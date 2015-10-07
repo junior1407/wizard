@@ -3,8 +3,15 @@ CREATE TABLE `financeiro`.`new_table` (
   `nome` VARCHAR(45) NULL COMMENT '',
   `apelido` VARCHAR(45) NULL COMMENT '',
   `data_admissao` DATE NULL COMMENT '',
-  `tipo` INT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '');
+
+
+CREATE TABLE `financeiro`.`telefone` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `numero` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
 
 
 
@@ -28,19 +35,25 @@ quantas matriculou no curso intensivo
 
 
 
-
-CREATE TABLE `financeiro`.`ligacao` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `telefone` VARCHAR(45) NULL COMMENT '',
-  `grau_interesse` INT NULL COMMENT '',
-  `data` DATETIME NULL COMMENT '',
-  `situacao` INT NULL COMMENT '',
-  `observacao` VARCHAR(500) NULL COMMENT '',
-  `id_acessor` INT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `id_ligacao_acessor_idx` (`id_acessor` ASC)  COMMENT '',
+CREATE TABLE `finaceiro`.`ligacao` (
+  `id` INT NOT NULL,
+  `idtelefone` INT NULL,
+  `idacessor` INT NULL,
+  `data` DATETIME NULL,
+  `observacao` VARCHAR(500) NULL,
+  `grauinteresse` INT NULL,
+  `situacao` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `id_ligacao_acessor_idx` (`idacessor` ASC),
+  INDEX `id_ligacao_telefone_idx` (`idtelefone` ASC),
   CONSTRAINT `id_ligacao_acessor`
-    FOREIGN KEY (`id_acessor`)
-    REFERENCES `financeiro`.`acessor` (`id`)
+    FOREIGN KEY (`idacessor`)
+    REFERENCES `finaceiro`.`acessor` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_ligacao_telefone`
+    FOREIGN KEY (`idtelefone`)
+    REFERENCES `finaceiro`.`telefone` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+COMMENT = '	';
