@@ -1,4 +1,4 @@
-CREATE TABLE `financeiro`.`new_table` (
+CREATE TABLE `financeiro`.`acessor` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',
   `apelido` VARCHAR(45) NULL COMMENT '',
@@ -12,15 +12,6 @@ CREATE TABLE `financeiro`.`telefone` (
   `numero` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-
-
-
-CREATE TABLE `financeiro`.`telefone` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `numero` VARCHAR(45) NULL COMMENT '',
-  `nome` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-COMMENT = '	';
 
 
 matricula toda hora: 
@@ -57,3 +48,23 @@ CREATE TABLE `finaceiro`.`ligacao` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 COMMENT = '	';
+
+
+
+USE `finaceiro`;
+CREATE 
+     OR REPLACE ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `viewpadrao` AS
+    SELECT 
+        `ac`.`apelido` AS `apelido`, `tel`.`nome` AS `nome`, `tel`.`numero` as `numero`
+    FROM
+        ((`acessor` `ac`
+        JOIN `ligacao` `lig`)
+        JOIN `telefone` `tel`)
+    WHERE
+        ((`ac`.`id` = `lig`.`idacessor`)
+            AND (`lig`.`idtelefone` = `tel`.`id`));
+
+
